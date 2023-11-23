@@ -109,7 +109,6 @@ def ping(host, timeout=1):
     # Calculate vars values and return them
     # Send ping requests to a server separated by approximately one second
     for i in range(0,5):
-        # result = doOnePing("172.217.14.227", timeout)
         result = doOnePing(dest, timeout)
         resps.append(result)
         time.sleep(1) # one second
