@@ -52,6 +52,7 @@ def receiveOnePing(mySocket, ID, timeout, destAddr):
 
         if packet_id == ID and packet_type == 0 and code == 0:
             packet_data = (packet_type, code, checksum, packet_id, seq_num, timeReceived)
+            # print(packet_data)
             return packet_data
         #Fill in end
 
@@ -109,6 +110,7 @@ def ping(host, timeout=1):
     # Calculate vars values and return them
     # Send ping requests to a server separated by approximately one second
     for i in range(0,5):
+        # result = doOnePing("142.251.215.227", timeout)
         result = doOnePing(dest, timeout)
         resps.append(result)
         time.sleep(1) # one second
@@ -116,4 +118,4 @@ def ping(host, timeout=1):
     return resps
 
 if __name__ == '__main__':
-    ping("google.co.il")
+    ping("localhost")
