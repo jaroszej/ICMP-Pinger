@@ -52,7 +52,6 @@ def receiveOnePing(mySocket, ID, timeout, destAddr):
 
         if packet_id == ID and packet_type == 0 and code == 0:
             packet_data = (packet_type, code, checksum, packet_id, seq_num, timeReceived)
-            # print(packet_data)
             return packet_data
         #Fill in end
 
