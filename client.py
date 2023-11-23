@@ -51,7 +51,6 @@ def receiveOnePing(mySocket, ID, timeout, destAddr):
         try:
             packet_type, code, checksum, packet_id, seq_num = struct.unpack("bbHHh", icmp_header)
             packet_data = (packet_type, code, checksum, packet_id, seq_num, recPacket)
-            print('data', packet_data)
 
             # if packet_id == ID and packet_type == 0 and code == 0:
             if packet_id == ID:
