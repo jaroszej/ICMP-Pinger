@@ -50,11 +50,14 @@ def receiveOnePing(mySocket, ID, timeout, destAddr):
         icmp_header = recPacket[20:28]
         try:
             packet_type, code, checksum, packet_id, seq_num = struct.unpack("bbHHh", icmp_header)
-            
-            if packet_id == ID and packet_type == 0:
+            packet_data = (packet_type, code, checksum, packet_id, seq_num, recPacket)
+            print('data', packet_data)
+
+            # if packet_id == ID and packet_type == 0 and code == 0:
+            if packet_id == ID:
                 struct_size = struct.calcsize('d')
                 time_sent = struct.unpack('d', recPacket[28:28 + struct_size])[0]
-                resp = (timeReceived - time_sent, (packet_type, code, checksum, packet_id, seq_num, recPacket))
+                resp = (timeReceived - time_sent, packet_data)
                 return resp
 
         except struct.error:
